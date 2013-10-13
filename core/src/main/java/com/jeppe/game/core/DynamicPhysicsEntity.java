@@ -40,7 +40,7 @@ public abstract class DynamicPhysicsEntity extends Entity implements PhysicsEnti
   @Override
   public void initPreLoad(final BallWorld ballWorld) {
     // attach our layer to the dynamic layer
-  //  ballWorld.dynamicLayer.add(layer);
+	  	ballWorld.dynamicLayer.add(layer);
   }
 
   @Override

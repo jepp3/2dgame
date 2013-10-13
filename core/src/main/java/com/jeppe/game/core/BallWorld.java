@@ -4,4 +4,6 @@ import playn.core.GroupLayer;
 
 
 public class BallWorld {
+
+	 public GroupLayer dynamicLayer;
 }

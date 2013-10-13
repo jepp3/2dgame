@@ -25,7 +25,14 @@
       <artifactId>playn-core</artifactId>
       <version>${playn.version}</version>
     </dependency>
-
+	
+     <dependency>
+   <groupId>com.googlecode.playn</groupId>
+   <artifactId>playn-java</artifactId>
+   <version>${playn.version}</version>
+   <scope>test</scope>
+ </dependency>
+ 
     <dependency>
       <groupId>com.threerings</groupId>
       <artifactId>tripleplay</artifactId>
@@ -41,21 +48,60 @@
   </dependencies>
 
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <!-- build a -sources.jar always, rather than only on deploy -->
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
+  <plugins>
+    <plugin>
+      <groupId>com.googlecode.mavennatives</groupId>
+      <artifactId>maven-nativedependencies-plugin</artifactId>
+      <version>0.0.6</version>
+      <executions>
+        <execution>
+          <id>unpacknatives</id>
+          <phase>generate-resources</phase>
+          <goals> <goal>copy</goal> </goals>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>2.12</version>
+      <configuration>
+        <argLine>-Djava.library.path=${basedir}/target/natives</argLine>
+      </configuration>
+    </plugin>
+  </plugins>
+  <pluginManagement>
+  	<plugins>
+  		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+  		<plugin>
+  			<groupId>org.eclipse.m2e</groupId>
+  			<artifactId>lifecycle-mapping</artifactId>
+  			<version>1.0.0</version>
+  			<configuration>
+  				<lifecycleMappingMetadata>
+  					<pluginExecutions>
+  						<pluginExecution>
+  							<pluginExecutionFilter>
+  								<groupId>
+  									com.googlecode.mavennatives
+  								</groupId>
+  								<artifactId>
+  									maven-nativedependencies-plugin
+  								</artifactId>
+  								<versionRange>[0.0.6,)</versionRange>
+  								<goals>
+  									<goal>copy</goal>
+  								</goals>
+  							</pluginExecutionFilter>
+  							<action>
+  								<ignore></ignore>
+  							</action>
+  						</pluginExecution>
+  					</pluginExecutions>
+  				</lifecycleMappingMetadata>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </pluginManagement>
   </build>
 </project>

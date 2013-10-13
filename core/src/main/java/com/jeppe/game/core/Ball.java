@@ -14,8 +14,9 @@ import playn.core.Image;
 public class Ball extends com.jeppe.game.core.DynamicPhysicsEntity
 {
 	 
-	private static Image image = loadImage("pea.png");
-	 
+	private static Image image = loadImage("ball.png");
+	public static String TYPE = "Ball";
+
 	public Ball(BallWorld ballWorld, World world, float x, float y, float angle) 
 	{
 	    super(ballWorld, world, x, y, angle);
@@ -85,17 +86,6 @@ public class Ball extends com.jeppe.game.core.DynamicPhysicsEntity
 	    return image;
 	  }
 
-	@Override
-	public void initPostLoad(BallWorld ballWorld) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void initPreLoad(BallWorld ballWorld) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	 
 	

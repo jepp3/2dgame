@@ -5,30 +5,42 @@ import static playn.core.PlayN.assets;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import playn.core.Image;
+import playn.java.JavaPlatform;
 
 
-public class EntityTest {
+public class EntityTest extends AbstractPlayNTester {
 	
 
-	private Entity entity;
+	private static Entity entity;
 	
 	
-	@Before
-	public  void before()
+	@BeforeClass
+	public static void beforeClass()
 	{
-		entity = new Entity(new BallWorld(),0,0,0) {
+		initPlayN();
+	}
 
+	@Test
+	public void testLoadOfImage() {
+		
+		EntityTest.createInstance(new BallWorld(), 0, 0,0);
+		assertTrue(this.entity.getImage() != null);
+	}
+
+	private static void createInstance(final BallWorld ballWorld, float x, float y, float angle)
+	{
+		entity = new Entity(ballWorld,x,y,angle) {
+			
 			@Override
 			public void initPreLoad(BallWorld ballWorld) {
-				
 			}
 			
 			@Override
 			public void initPostLoad(BallWorld ballWorld) {
-				System.out.println("called init");
 			}
 			
 			@Override
@@ -38,35 +50,14 @@ public class EntityTest {
 			
 			@Override
 			public Image getImage() {
-
-				Image bgImage = assets().getImage("images/bg.png");
-				
-				
-				return bgImage;
+				return assets().getImage("peas/images/pea.png");
 			}
 			
 			@Override
 			float getHeight() {
-
 				return 0;
 			}
 		};
-		
-		
-		
-		
 	}
-	
-	@After
-	public  void after()
-	{
-		
-	}
-	
-	@Test
-	public void test() {
-	
-	}
-
 
 }
