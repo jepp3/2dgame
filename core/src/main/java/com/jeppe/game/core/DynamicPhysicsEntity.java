@@ -57,6 +57,8 @@ public abstract class DynamicPhysicsEntity extends Entity implements PhysicsEnti
 
   @Override
   public void setPos(float x, float y) {
+	  
+	  System.out.println("set pos");
     super.setPos(x, y);
     getBody().setTransform(new Vec2(x, y), getBody().getAngle());
     prevX = x;

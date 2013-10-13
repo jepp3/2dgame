@@ -7,6 +7,7 @@ import playn.core.GroupLayer;
 import playn.core.Image;
 import playn.core.ImageLayer;
 import playn.core.PlayN;
+import playn.core.Pointer;
 import playn.core.util.Callback;
 
 public class JeppeGame extends Game.Default {
@@ -17,6 +18,9 @@ public class JeppeGame extends Game.Default {
 	private GroupLayer	worldLayer;
 	private	BallWorld	world;
 	private boolean 	worldLoaded = false;
+	Image bgImage = null;
+	ImageLayer bgLayer = null;
+	private final String level = "peas/levels/level1.json";
 	
 	public JeppeGame() {
 		super(33); // call update every 33ms (30 times per second)
@@ -27,12 +31,12 @@ public class JeppeGame extends Game.Default {
 		createBackgroundLayer();
 		createWorldLayer();
 		createWorld();
-		
+	    setPointerListner();		
 	}
 	private void createBackgroundLayer()
 	{
-		Image bgImage = assets().getImage("images/bg.png");
-		ImageLayer bgLayer = graphics().createImageLayer(bgImage);
+		bgImage = assets().getImage("bg.png");
+		bgLayer = graphics().createImageLayer(bgImage);
 		graphics().rootLayer().add(bgLayer);
 	}
 	
@@ -60,20 +64,42 @@ public class JeppeGame extends Game.Default {
 		};
 		
 		
-		BallLoader.createWorld(worldLayer,callback);
+		BallLoader.createWorld(level,worldLayer,callback);
 	}
 	
 	private void setPointerListner()
 	{
-		
+		pointer().setListener(new Pointer.Adapter() {
+		      @Override
+		      public void onPointerStart(Pointer.Event event) {
+		        if (worldLoaded) {
+		          Ball pea = new Ball(world, world.world, physUnitPerScreenUnit * event.x(),
+		                            physUnitPerScreenUnit * event.y(), 0);
+		          world.add(pea);
+		        }
+		      }
+		    });
 	}
-	@Override
-	public void update(int delta) {
-	}
+	  public void shutdown() {
+	    bgLayer.destroy();
+	    bgLayer = null;
+	    worldLayer.destroy();
+	    worldLayer = null;
+	    world = null;
+	    worldLoaded = false;
+	  }
 
-	@Override
-	public void paint(float alpha) {
-	
-		
-	}
+	  @Override
+	  public void paint(float alpha) {
+	    if (worldLoaded) {
+	      world.paint(alpha);
+	    }
+	  }
+
+	  @Override
+	  public void update(int delta) {
+	    if (worldLoaded) {
+	      world.update(delta);
+	    }
+	  }
 }
