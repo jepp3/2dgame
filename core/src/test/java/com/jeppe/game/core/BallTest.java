@@ -11,7 +11,9 @@ public class BallTest {
 	@Test
 	public void test() {
 		
-	//	Ball ball = new Ball(new BallWorld(),new World(new Vec2(0, 1)), 0f, 0f, 1f);
+		//Ball ball = new Ball(new BallWorld(),new World(new Vec2(0, 1)), 0f, 0f, 1f);
+		
+		
 	}
 
 }

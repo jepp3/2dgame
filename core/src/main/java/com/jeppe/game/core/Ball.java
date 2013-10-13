@@ -38,8 +38,6 @@ public class Ball extends com.jeppe.game.core.DynamicPhysicsEntity
 		 * create fixture from def
 		 *  
 		 * add fixture to body
-		 * 
-		 * 
 		 */
 		
 		
@@ -79,14 +77,12 @@ public class Ball extends com.jeppe.game.core.DynamicPhysicsEntity
 	  }
 
 	  float getRadius() {
-	    //return 1.50f;
 	    return 0.5f;
 	  }
 
 
 	  public Image getImage() {
 	    return image;
-	    // return chrome;
 	  }
 
 	@Override
