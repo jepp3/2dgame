@@ -1,4 +1,4 @@
-2DGamE
+2DGAME
 ======
 
 ## The game
