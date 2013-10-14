@@ -4,7 +4,7 @@
 ## The game
 The game is just a game. A game that shows thats its possible to write code that compiles and runs on different platforms. 
 
-## Technics 
+## Techniques 
 This game is made with PlayN. PlayN is a great game engine that Google has provided. PlayN uses GWT.
 
 ## Installation
