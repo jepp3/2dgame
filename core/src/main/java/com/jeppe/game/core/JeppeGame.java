@@ -59,7 +59,7 @@ public class JeppeGame extends Game.Default {
 
 			@Override
 			public void onFailure(Throwable cause) {
-				 PlayN.log().error("Error loading pea world: " + cause.getMessage());
+				 PlayN.log().error("Error loading ball world: " + cause.getMessage());
 			}
 		};
 		

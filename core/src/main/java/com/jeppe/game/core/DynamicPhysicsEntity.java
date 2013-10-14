@@ -42,9 +42,10 @@ public abstract class DynamicPhysicsEntity extends Entity implements PhysicsEnti
     // attach our layer to the dynamic layer
 	 	ballWorld.dynamicLayer.add(layer);
   }
-
+  
   @Override
   public void initPostLoad(final BallWorld ballWorld) {
+  
   }
 
   public void setLinearVelocity(float x, float y) {
