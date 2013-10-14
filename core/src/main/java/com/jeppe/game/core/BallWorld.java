@@ -34,7 +34,6 @@ public class BallWorld implements ContactListener {
 
 	  // box2d object containing physics world
 	  protected World world;
-
 	  
 	  
 	  // a list containing clouds, clouds and so on.
@@ -43,11 +42,6 @@ public class BallWorld implements ContactListener {
 	  // hashmap of something
 	  private HashMap<Body, PhysicsEntity> bodyEntityLUT = new HashMap<Body, PhysicsEntity>();
 	  
-	  /*
-	   *  Contact manages contact between two shapes. A contact exists for
-	   *  each overlapping AABB in the broad-phase (except if filtered). 
-	   *  Therefore a contact object may we0exist tha0t has no contact points.
-	   */
 	  private Stack<Contact> contacts = new Stack<Contact>();
 
 	  private static boolean showDebugDraw = false;
