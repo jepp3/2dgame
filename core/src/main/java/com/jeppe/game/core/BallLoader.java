@@ -41,9 +41,10 @@ public class BallLoader {
 		          Entity entity = null;
 		          if (Ball.TYPE.equalsIgnoreCase(type)) {
 		            entity = new Ball(ballWorld, ballWorld.world, x, y, a);
-		          }/* else if (Block.TYPE.equalsIgnoreCase(type)) {
-		            entity = new Block(peaWorld, peaWorld.world, x, y, a);
-		          } else if (BlockRightRamp.TYPE.equalsIgnoreCase(type)) {
+		          } else if (Block.TYPE.equalsIgnoreCase(type)) {
+		        	  System.out.println("block!");
+		            entity = new Block(ballWorld, ballWorld.world, x, y, a);
+		          }/* else if (BlockRightRamp.TYPE.equalsIgnoreCase(type)) {
 		            entity = new BlockRightRamp(peaWorld, peaWorld.world, x, y, a);
 		          } else if (BlockLeftRamp.TYPE.equalsIgnoreCase(type)) {
 		            entity = new BlockLeftRamp(peaWorld, peaWorld.world, x, y, a);

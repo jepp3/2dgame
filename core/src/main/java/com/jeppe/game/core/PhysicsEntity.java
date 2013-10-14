@@ -7,6 +7,6 @@ public interface PhysicsEntity {
 	  public Body getBody();
 
 	  public interface HasContactListener {
-	    public void contact(PhysicsEntity other);
-	  }
+		    public void contact(PhysicsEntity other);
+		  }
 	}
