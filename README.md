@@ -1,4 +1,4 @@
-2dgame
+2DGamE
 ======
 
 ## The game
@@ -11,7 +11,7 @@ This game is made with PlayN. PlayN is a great game engine that Google has provi
 * Clone the repo
 * Run `mvn package`
 * Consult PlayN wiki for deeper understanding of the framework.
-
+* More info can also be found on the wiki page for this project
 
 ## Credits
 Credits goes to Google that makes this possible...but a stronger community for PlayN would be great.
